@@ -1,15 +1,19 @@
 import React from 'react';
-import {View} from "react-native";
+import {View, Text} from "react-native";
+// import {List} from "native-base";
 import shopStore from '../../stores/shopStore';
 import ShopItem from "./ShopItem";
+import { observer } from 'mobx-react';
 
+const ShopList = ({navigation}) => {
 
-const ShopList = () => {
+    if(shopStore.loading) return <Text>loadingg</Text>
+
     const shopList = shopStore.shops.map(shop=>
-        <ShopItem shop={shop} key={shop.id}/>)
+        <ShopItem shop={shop} key={shop.id} navigation={navigation} />)
         return <View>
-            {shopList}
-        </View>;
+        {shopList}
+         </View>;
 };
 
-export default ShopList;
+export default observer(ShopList);

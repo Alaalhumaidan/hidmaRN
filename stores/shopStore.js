@@ -5,9 +5,11 @@ import instance from "./instance";
 class ShopStore {
 shops = [] ;
 loading = true;
+
 constructor(){
     makeAutoObservable(this);
 }
+
 fetchShops = async () => {
     try{
 const response = await instance.get("/shops");
